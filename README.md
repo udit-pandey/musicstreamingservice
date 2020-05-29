@@ -9,6 +9,6 @@ The algorithm is designed keeping in mind the following points:<br/>
 1. It should take into account the recent history.<br/>
 2. Songs with random streaming patterns with sudden spikes are not labelled as trending, as these might be anomalies in the data.<br/><br/>
 
-The algorithm implemented here makes use of decaying window algorithm with a window size of a day. The final output is a list of trending songs for 25th-31st Dec.
+The algorithm implemented here makes use of decaying window algorithm with a window size of a day. The final output is a list of top 100 trending songs for 25th-31st Dec.
 
 
