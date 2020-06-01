@@ -1,4 +1,4 @@
-# musicstreamingservice
+# Trending Songs for a day
 Definition of trending: It may be defined loosely as those songs that have gathered relatively high number of streams within small time window (e.g. the last four hours) and have also shown positive increases in their stream growth rates.<br/><br/>
 
 The dataset is hosted on Amazon S3 and is 44GB in size. Each stream is represented as a tuple with the following attributes:<br/>
