@@ -1,3 +1,5 @@
+package dto;
+
 /**
  * A custom class to store songId and total score for song. This custom class implements
  * comparable interface and thus makes it easier to sort a list songs based on their score.

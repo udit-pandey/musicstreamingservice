@@ -1,7 +1,9 @@
+package mapreduce;
+
+import dto.SongAndScoreDto;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.util.Progressable;
 
 import java.io.*;
 import java.net.URI;

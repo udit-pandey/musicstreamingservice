@@ -1,8 +1,12 @@
+package mapreduce;
+
+import dto.DateAndScoreDto;
 import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
+import java.util.stream.StreamSupport;
 
 /**
  * Takes the scores for a particular song which is to be analysed for a particular date.
@@ -11,17 +15,22 @@ import java.io.IOException;
  * save some analysis time, we are only writing the song and its total score to output if its
  * total score is greater than unpopular filter value.
  */
-public class SaavnReducer extends Reducer<DateAndSongDto,DoubleWritable,Text,DoubleWritable> {
+public class SaavnReducer extends Reducer<Text, DateAndScoreDto, Text, DoubleWritable> {
     private static final double dampingFactor = 0.1;
     private static final double unpopularFilter = 9.99999999999999;
 
-    public void reduce(DateAndSongDto dateAndSongDto, Iterable<DoubleWritable> weights, Context context) throws IOException, InterruptedException {
+    public void reduce(Text songId, Iterable<DateAndScoreDto> dateAndScoreList, Context context) throws IOException, InterruptedException {
         double songScore = 0;
-        for (DoubleWritable weightOfSong : weights) {
-            songScore = songScore * (1 - dampingFactor) + weightOfSong.get();
+        long totalCount = StreamSupport.stream(dateAndScoreList.spliterator(), false).count();
+
+        while (totalCount > 1) {
+            songScore = songScore + Math.pow((1 - dampingFactor), totalCount);
+            totalCount--;
         }
+        songScore++;
+
         if (songScore > unpopularFilter) {
-            context.write(new Text(dateAndSongDto.getSongId()), new DoubleWritable(songScore));
+            context.write(new Text(songId), new DoubleWritable(songScore));
         }
     }
 }
