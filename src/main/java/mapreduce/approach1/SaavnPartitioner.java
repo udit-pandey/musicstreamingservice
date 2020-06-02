@@ -1,4 +1,4 @@
-package mapreduce;
+package mapreduce.approach1;
 
 import dto.DateAndScoreDto;
 import org.apache.hadoop.conf.Configurable;
@@ -17,7 +17,7 @@ import java.util.Map;
  */
 public class SaavnPartitioner extends Partitioner<Text, DateAndScoreDto> implements Configurable {
     private Configuration configuration;
-    private Map<Integer, Integer> date = new HashMap<Integer, Integer>();
+    private Map<Integer, Integer> date = new HashMap<>();
 
     public void setConf(Configuration configuration) {
         this.configuration = configuration;

@@ -1,9 +1,9 @@
 import dto.DateAndScoreDto;
 import exception.SaavnAnalyticsException;
 import exception.SaavnAnalyticsJobConfigException;
-import mapreduce.SaavnMapper;
-import mapreduce.SaavnPartitioner;
-import mapreduce.SaavnReducer;
+import mapreduce.approach1.SaavnMapper;
+import mapreduce.approach1.SaavnPartitioner;
+import mapreduce.approach1.SaavnReducer;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;

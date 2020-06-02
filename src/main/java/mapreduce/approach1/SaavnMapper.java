@@ -1,6 +1,7 @@
-package mapreduce;
+package mapreduce.approach1;
 
 import dto.DateAndScoreDto;
+import mapreduce.HelperMethods;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.Mapper;
 
